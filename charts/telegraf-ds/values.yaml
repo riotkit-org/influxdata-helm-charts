@@ -36,6 +36,10 @@ env:
     valueFrom:
       fieldRef:
         fieldPath: spec.nodeName
+  - name: NODENAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
   # In test clusters where hostnames are resolved in /etc/hosts on each node,
   # the HOSTNAME is not resolvable from inside containers
   # So inject the host IP as well
@@ -113,7 +117,7 @@ config:
     debug: false
     quiet: false
     logfile: ""
-    hostname: "$HOSTNAME"
+    hostname: "$NODENAME"
     omit_hostname: false
   disabledInputs: []  # e.g. ["diskio", "kernel", "docker"]
   inputs:
