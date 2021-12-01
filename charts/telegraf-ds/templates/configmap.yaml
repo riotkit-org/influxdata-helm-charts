@@ -17,59 +17,59 @@ data:
     {{ template "outputs" .Values.config.outputs }}
     {{ template "monitor_self" .Values.config.monitor_self }}
 
-    {{- if not (has "diskio" .Values.disabledInputs) }}
+    {{- if not (has "diskio" .Values.config.disabledInputs) }}
     [[inputs.diskio]]
     {{- .Values.config.inputs.diskio | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "kernel" .Values.disabledInputs) }}
+    {{- if not (has "kernel" .Values.config.disabledInputs) }}
     [[inputs.kernel]]
     {{- .Values.config.inputs.kernel | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "mem" .Values.disabledInputs) }}
+    {{- if not (has "mem" .Values.config.disabledInputs) }}
     [[inputs.mem]]
     {{- .Values.config.inputs.mem | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "net" .Values.disabledInputs) }}
+    {{- if not (has "net" .Values.config.disabledInputs) }}
     [[inputs.net]]
     {{- .Values.config.inputs.net | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "processes" .Values.disabledInputs) }}
+    {{- if not (has "processes" .Values.config.disabledInputs) }}
     [[inputs.processes]]
     {{- .Values.config.inputs.processes | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "swap" .Values.disabledInputs) }}
+    {{- if not (has "swap" .Values.config.disabledInputs) }}
     [[inputs.swap]]
     {{- .Values.config.inputs.swap | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "system" .Values.disabledInputs) }}
+    {{- if not (has "system" .Values.config.disabledInputs) }}
     [[inputs.system]]
     {{- .Values.config.inputs.system | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "cpu" .Values.disabledInputs) }}
+    {{- if not (has "cpu" .Values.config.disabledInputs) }}
     [[inputs.cpu]]
     {{- .Values.config.inputs.cpu | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "disk" .Values.disabledInputs) }}
+    {{- if not (has "disk" .Values.config.disabledInputs) }}
     [[inputs.disk]]
     ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
     {{ .Values.config.inputs.disk | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "docker" .Values.disabledInputs) }}
+    {{- if not (has "docker" .Values.config.disabledInputs) }}
     [[inputs.docker]]
     endpoint = "unix:///var/run/docker.sock"
     {{ .Values.config.inputs.docker | nindent 4 }}
     {{- end }}
 
-    {{- if not (has "kubernetes" .Values.disabledInputs) }}
+    {{- if not (has "kubernetes" .Values.config.disabledInputs) }}
     [[inputs.kubernetes]]
     url = "https://$HOSTIP:10250"
     bearer_token = "/run/secrets/kubernetes.io/serviceaccount/token"
