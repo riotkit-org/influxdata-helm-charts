@@ -17,6 +17,16 @@ resources:
     memory: 2Gi
     cpu: 1
 
+# Mount secrets, TLS certificates
+volumeMounts: []
+#  - name: certs
+#    mountPath: /mnt/certs
+
+volumes: []
+#  - name: certs
+#    configMap:
+#      name: certs
+
 ## Configure args passed to Telegraf containers
 args: []
 
