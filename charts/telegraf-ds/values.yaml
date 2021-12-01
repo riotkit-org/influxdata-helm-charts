@@ -105,6 +105,25 @@ config:
     logfile: ""
     hostname: "$HOSTNAME"
     omit_hostname: false
+  inputs:
+      diskio: ""
+      kernel: ""
+      mem: ""
+      net: ""
+      processes: ""
+      swap: ""
+      system: ""
+      cpu: ""
+#      cpu: |
+#        percpu = false
+#        totalcpu = true
+#        collect_cpu_time = false
+#        report_active = false
+#        fieldpass = ["usage_user", "usage_system", "usage_idle", "usage_iowait"]
+      disk: ""
+      enableDocker: true  # set to false if using Kubernetes with CRI-O
+      docker: ""
+      kubernetes: ""
   outputs:
     - influxdb:
         urls:

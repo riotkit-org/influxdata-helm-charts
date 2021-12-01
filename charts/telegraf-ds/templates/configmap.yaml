@@ -18,27 +18,46 @@ data:
     {{ template "monitor_self" .Values.config.monitor_self }}
 
     [[inputs.diskio]]
+    {{- .Values.config.inputs.diskio | nindent 4 }}
+
     [[inputs.kernel]]
+    {{- .Values.config.inputs.kernel | nindent 4 }}
+
     [[inputs.mem]]
+    {{- .Values.config.inputs.mem | nindent 4 }}
+
     [[inputs.net]]
+    {{- .Values.config.inputs.net | nindent 4 }}
+
     [[inputs.processes]]
+    {{- .Values.config.inputs.processes | nindent 4 }}
+
     [[inputs.swap]]
+    {{- .Values.config.inputs.swap | nindent 4 }}
+
     [[inputs.system]]
+    {{- .Values.config.inputs.system | nindent 4 }}
 
     [[inputs.cpu]]
     percpu = true
     totalcpu = true
     collect_cpu_time = false
     report_active = false
+    {{- .Values.config.inputs.cpu | nindent 4 }}
 
     [[inputs.disk]]
     ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+    {{ .Values.config.inputs.disk | nindent 4 }}
 
+    {{- if .Values.config.inputs.enableDocker }}
     [[inputs.docker]]
     endpoint = "unix:///var/run/docker.sock"
+    {{ .Values.config.inputs.docker | nindent 4 }}
+    {{- end }}
 
     [[inputs.kubernetes]]
     url = "https://$HOSTIP:10250"
     bearer_token = "/run/secrets/kubernetes.io/serviceaccount/token"
     insecure_skip_verify = true
+    {{ .Values.config.inputs.kubernetes | nindent 4 }}
 {{- end }}
