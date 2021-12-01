@@ -124,7 +124,11 @@ config:
       processes: ""
       swap: ""
       system: ""
-      cpu: ""
+      cpu: |
+        percpu = true
+        totalcpu = true
+        collect_cpu_time = false
+        report_active = false
 #      cpu: |
 #        percpu = false
 #        totalcpu = true

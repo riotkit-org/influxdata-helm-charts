@@ -54,10 +54,6 @@ data:
 
     {{- if not (has "cpu" .Values.disabledInputs) }}
     [[inputs.cpu]]
-    percpu = true
-    totalcpu = true
-    collect_cpu_time = false
-    report_active = false
     {{- .Values.config.inputs.cpu | nindent 4 }}
     {{- end }}
 
