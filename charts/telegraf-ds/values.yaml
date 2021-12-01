@@ -115,6 +115,7 @@ config:
     logfile: ""
     hostname: "$HOSTNAME"
     omit_hostname: false
+  disabledInputs: []  # e.g. ["diskio", "kernel", "docker"]
   inputs:
       diskio: ""
       kernel: ""
@@ -131,7 +132,6 @@ config:
 #        report_active = false
 #        fieldpass = ["usage_user", "usage_system", "usage_idle", "usage_iowait"]
       disk: ""
-      enableDocker: true  # set to false if using Kubernetes with CRI-O
       docker: ""
       kubernetes: ""
   outputs:
